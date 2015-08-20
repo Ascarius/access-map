@@ -1,0 +1,24 @@
+{
+  "name": "access-map",
+  "version": "1.0.0",
+  "homepage": "https://github.com/Ascarius/access-map",
+  "authors": [
+    "Lionel Gaillard <lionel.gaillard@wxrstudios.com>"
+  ],
+  "description": "jQuery plugin on top of Google Maps API for simple access map.",
+  "main": "dist/access-map.min.js",
+  "keywords": [
+    "jquery",
+    "plugin",
+    "access",
+    "map"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules"
+  ],
+  "dependencies": {
+    "jquery": "~1.9.0"
+  }
+}

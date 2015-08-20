@@ -156,7 +156,7 @@ var __slice = [].slice;
     };
 
     AccessMap.prototype.fit = function() {
-      var e, marker, n, ne, pos, s, sw, w, _i, _len, _ref;
+      var bounds, marker, _i, _len, _ref;
       if (this.markers.length === 0) {
         return;
       }
@@ -164,28 +164,13 @@ var __slice = [].slice;
         this.map.setCenter(this.markers[0].getPosition());
         return;
       }
-      s = n = this.markers[0].getPosition().lat();
-      w = e = this.markers[0].getPosition().lng();
+      bounds = new maps.LatLngBounds();
       _ref = this.markers;
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         marker = _ref[_i];
-        pos = marker.getPosition();
-        if (pos.lat() < s) {
-          s = pos.lat();
-        }
-        if (pos.lat() > n) {
-          n = pos.lat();
-        }
-        if (pos.lng() < w) {
-          w = pos.lat();
-        }
-        if (pos.lng() > n) {
-          e = pos.lat();
-        }
+        bounds.extend(marker.getPosition());
       }
-      sw = new maps.LatLng(s, w);
-      ne = new maps.LatLng(n, e);
-      this.map.fitBounds(new maps.LatLngBounds(sw, ne));
+      this.map.fitBounds(bounds);
     };
 
     return AccessMap;

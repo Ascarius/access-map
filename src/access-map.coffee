@@ -175,20 +175,12 @@
         @map.setCenter @markers[0].getPosition()
         return
 
-      s = n = @markers[0].getPosition().lat()
-      w = e = @markers[0].getPosition().lng()
+      bounds = new maps.LatLngBounds()
 
       for marker in @markers
-        pos = marker.getPosition()
-        s = pos.lat() if pos.lat() < s
-        n = pos.lat() if pos.lat() > n
-        w = pos.lat() if pos.lng() < w
-        e = pos.lat() if pos.lng() > n
+        bounds.extend marker.getPosition()
 
-      sw = new maps.LatLng s, w
-      ne = new maps.LatLng n, e
-
-      @map.fitBounds new maps.LatLngBounds sw, ne
+      @map.fitBounds bounds
 
       return
 
